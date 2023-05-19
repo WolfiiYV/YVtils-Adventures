@@ -1,0 +1,39 @@
+TODO
+
+Level Path
+
+Language System
+    DE & EN
+
+Add first ability's and difficulty's
+
+First Join -> Choose custom difficulty
+    (Maybe add previews/tutorials)
+
+Add local API for things like level path/gui/one time payment/...
+
+Option to create own difficulty's/ability's
+
+Item to change difficulty?
+    If yes which item?
+
+Difficulty reset command
+    Admin only
+    /adventure difficulty reset [player]
+
+Ability revoke command
+    Admin only
+    /adventure ability revoke [player] {ability}
+
+Add a option to upgrade difficulty's
+    (Add commands to change upgraded level?)
+
+Help Command/GUI
+    When GUI:
+        First GUI with two Items -> Choose Difficulty/Ability
+            Difficulty:
+                Explanation for every difficulty
+                How to create own difficulty's
+            Ability:
+                Explanation for every ability
+                How to create own ability's

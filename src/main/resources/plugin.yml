@@ -1,0 +1,9 @@
+name: YVtils-Adventures
+version: '${project.version}'
+main: yv.tils.adventures.Adventures
+api-version: 1.19
+authors: [ WolfiiYV ]
+contributor: [ SlWed, black_Kittys, SilverZer0 ]
+description: Plugin for Survival Servers
+website: yvnetwork.de
+prefix: YVtils-Adventures
