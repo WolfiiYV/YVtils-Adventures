@@ -1,0 +1,5 @@
+#Available languages: en -> English / de -> Deutsch
+Language: en
+
+#Debug <- Console spam pre-programmed
+Debug: false

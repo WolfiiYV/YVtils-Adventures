@@ -11,7 +11,7 @@ public class ConsoleLog {
     public ConsoleLog(String WhatLog) {
         if (Adventures.getInstance().getConfig().getBoolean("Debug")) {
             Bukkit.getConsoleSender().sendMessage("§c----- DEBUG START -----");
-            Bukkit.getConsoleSender().sendMessage("§9YVtils-SMP Plugin");
+            Bukkit.getConsoleSender().sendMessage("§9YVtils-Adventures Plugin");
             Bukkit.getConsoleSender().sendMessage(WhatLog);
             Bukkit.getConsoleSender().sendMessage("§c----- DEBUG END -----");
         }

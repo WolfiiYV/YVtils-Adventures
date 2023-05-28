@@ -4,6 +4,20 @@ main: yv.tils.adventures.Adventures
 api-version: 1.19
 authors: [ WolfiiYV ]
 contributor: [ SlWed, black_Kittys, SilverZer0 ]
+ideas: [ SlWed, WolfiiYV, Cynto ]
 description: Plugin for Survival Servers
 website: yvnetwork.de
 prefix: YVtils-Adventures
+
+commands:
+  adventure:
+    permission: yvtils.adventures.cmd
+    description: Main Command for the YVtils Adventures Plugin
+    aliases:
+      - a
+      - yva
+  levelpath:
+    permission: yvtils.adventures.cmd
+    description: Opens directly the Level-Path GUI (Alias for /adventure ability path)
+    aliases:
+      - path
