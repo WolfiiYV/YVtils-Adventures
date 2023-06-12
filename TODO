@@ -1,15 +1,42 @@
 TODO
 
+ADD PERMISSION SYSTEM
+    VERY IMPORTANT
+
+LightFlight Command
+    Add Live Cooldown
+
+Drop Chances
+    Make them more lucky (doubled extra drops -> 0.5; tripled extra drops -> 0.3)
+
 Level Path
     Left-click: Claim ability
     Right-click: Info of ability
     Hover: Show information's about the Level
     (Maybe animate side switch)
+    Upgrade XP for Difficulty's (Make the Difficulty's better)
+
+Log System for difficultys & abillitys
+    Extra Files?
+    Be able to (de-)activate the logging
+    Add debug options for everything
+
+Faster Mining
+    Maybe change from Haste Effect to https://github.com/jordoncodes/MiningSpeed/tree/main
+    (https://discord.com/channels/397526357191557121/1044230223513784350)
+
+Careful Snail
+    Add replaceable blocks like Ancient Debris to doubled drops
 
 Language System
     DE & EN
 
 Add first ability's and difficulty's
+
+I'll spare your life
+    Level 5:
+        Pay 10XP Level and become perks of Level 4, but 3x longer totem effects
+        or pay 15XP level and become 2x extra hearts and 3x longer totem effects
 
 First Join -> Choose custom difficulty
     (Maybe add previews/tutorials)

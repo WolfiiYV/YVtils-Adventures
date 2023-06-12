@@ -36,9 +36,9 @@ public class CreateFile_de {
         //ADDED
 
         ymlfile.addDefault("DIFFICULTY_DESC_CHALLENGE", "Du willst einen neuen Rekord? \nLass dich nicht töten, sagen sie, aber was wäre wenn du mehr Schaden abbekommst?");
-        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CHALLENGE", "Mehr Schaden von fast allem, \ndas ist eine Challenge, somit ist das alles.");
+        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CHALLENGE", "Doppelter Schaden von allem, \ndas ist eine Challenge, somit ist das alles.");
         ymlfile.addDefault("DIFFICULTY_DESC_ALMOST_PEACEFUL", "Du wurdest schon wieder von etwas getötet? \nSei nicht traurig, denn nun hast du es gefunden, \ndie ultimative Strategie, oder sogar den aller besten Schatz?\n Wer weiß!\n Aber bleibe nicht zu lange still stehen, brich doch zur nächsten Schatzsuche auf.");
-        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_ALMOST_PEACEFUL", "Weniger Schaden von fast allem, \naber bleibe nicht zu lange irgendwo stehen, nicht das du noch selbst im Wasser in Flammen aufgehst");
+        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_ALMOST_PEACEFUL", "Weniger Schaden von allem, \naber bleibe nicht zu lange irgendwo stehen, nicht das du noch selbst im Wasser in Flammen aufgehst");
         ymlfile.addDefault("DIFFICULTY_DESC_CARELESS_CHEETAH", "Du willst so schnell wie ein Gepard sein? \nDann ist das hier perfekt für dich! Aber sei vorsichtig, nicht das du noch Items vergisst mitzunehmen");
         ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CARELESS_CHEETAH", "Schnelligkeit & Eile, aber verringerte Drop Raten");
         ymlfile.addDefault("DIFFICULTY_DESC_CAREFUL_SNAIL", "Schnecken sind nicht schnell, aber daher können sie doch gar keine Items vergessen oder?");

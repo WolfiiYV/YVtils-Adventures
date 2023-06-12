@@ -45,6 +45,7 @@ public class CommandHandler implements CommandExecutor {
                 switch (args[1]) {
                     case "revoke" -> new RevokeAbility().onCommand(sender, cmd, label, args);
                     case "path" -> new LevelPath().GUI(player);
+                    case "lightflight" -> new LightFlightCMD().onCommand(sender, cmd, label, args);
                     default -> sendUsage(sender);
                 }
             }
@@ -59,6 +60,7 @@ public class CommandHandler implements CommandExecutor {
                 "\n/adventure difficulty reset [player]\n" +
                 "/adventure ability revoke [player] [ability]\n" +
                 "/adventure ability path\n" +
+                "/adventure ability lightflight\n" +
                 "/adventure help");
     }
 }

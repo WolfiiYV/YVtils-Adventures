@@ -19,7 +19,7 @@ public class CheckTime {
     private static final SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss");
 
     public void runnable() {
-        (new BukkitRunnable() {
+        new BukkitRunnable() {
             public void run() {
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 new ConsoleLog("Current Time: " + sdf1.format(timestamp));
@@ -45,6 +45,6 @@ public class CheckTime {
                     }
                 } catch (ParseException ignored) {}
             }
-        }).runTaskTimer(Adventures.getInstance(), 0L, 200L);
+        }.runTaskTimer(Adventures.getInstance(), 0L, 200L);
     }
 }

@@ -37,9 +37,9 @@ public class CreateFile_en {
         //ADDED
 
         ymlfile.addDefault("DIFFICULTY_DESC_CHALLENGE", "§7You want a new record? \nDon't let them kill you, they say, but what if they make more damage than you want them to?");
-        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CHALLENGE", "§dMore Damage from almost everything, \nit's a Challenge so that's all");
+        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CHALLENGE", "§dDouble damage from everything, \nit's a Challenge so that's all");
         ymlfile.addDefault("DIFFICULTY_DESC_ALMOST_PEACEFUL", "§7You were killed by something again? \nDon't be sad, now you have found it, \nthe ultimate strategy, or maybe even the best treasure ever? \nWho knows! But don't stand still for too long, search another treasure.");
-        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_ALMOST_PEACEFUL", "§dLess Damage from almost everything. \nIf you stand still for too long, you will receive Fire Damage, even in Water");
+        ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_ALMOST_PEACEFUL", "§dLess Damage from everything. \nIf you stand still for too long, you will receive Fire Damage, even in Water");
         ymlfile.addDefault("DIFFICULTY_DESC_CARELESS_CHEETAH", "§7You want to be as fast as a Cheetah? \nThen this is perfect for you! \nBut be carefully you maybe forget to pick up Items");
         ymlfile.addDefault("DIFFICULTY_DESC_DETAILED_CARELESS_CHEETAH", "§dSpeed & Haste, but lower Drop Rates");
         ymlfile.addDefault("DIFFICULTY_DESC_CAREFUL_SNAIL", "§7Snails are not fast, but then they can't forget any Items");

@@ -21,3 +21,8 @@ commands:
     description: Opens directly the Level-Path GUI (Alias for /adventure ability path)
     aliases:
       - path
+  lightflight:
+    permission: yvtils.adventures.cmd
+    description: Players with the ability "LightFlight" can boost themself 50 blocks up into the air
+    aliases:
+      - boost

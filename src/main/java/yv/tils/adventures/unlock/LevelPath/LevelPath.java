@@ -10,6 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import yv.tils.adventures.Adventures;
+import yv.tils.adventures.ability.Ability;
 import yv.tils.adventures.difficulty.Difficultys;
 import yv.tils.adventures.difficulty.SelectDifficulty;
 import yv.tils.adventures.utils.ConfigModeration;
@@ -161,9 +162,7 @@ public class LevelPath {
                         if (!abilitylist.contains(Level.L5.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 5.\n" +
                                     Level.L5.reward);
-                            player.setMaxHealth(25);
-                            player.setHealthScale(25);
-                            player.setHealth(25);
+                            new Ability().MoreLives(player, 1);
                             abilitylist.add(Level.L5.reward);
                             ymlfile.set(player.getName() + ".Abilitys", abilitylist);
                         }
@@ -211,9 +210,7 @@ public class LevelPath {
                         if (!abilitylist.contains(Level.L20.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 20.\n" +
                                     Level.L20.reward);
-                            player.setMaxHealth(30);
-                            player.setHealthScale(30);
-                            player.setHealth(30);
+                            new Ability().MoreLives(player, 2);
                             abilitylist.add(Level.L20.reward);
                             ymlfile.set(player.getName() + ".Abilitys", abilitylist);
                         }
@@ -227,9 +224,7 @@ public class LevelPath {
                         if (!abilitylist.contains(Level.L25.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 25.\n" +
                                     Level.L25.reward);
-                            player.setMaxHealth(35);
-                            player.setHealthScale(35);
-                            player.setHealth(35);
+                            new Ability().MoreLives(player, 3);
                             abilitylist.add(Level.L25.reward);
                             ymlfile.set(player.getName() + ".Abilitys", abilitylist);
                         }

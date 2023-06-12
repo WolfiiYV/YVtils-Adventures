@@ -1,15 +1,15 @@
 package yv.tils.adventures;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import yv.tils.adventures.cmd.CommandHandler;
 import yv.tils.adventures.cmd.LevelPathCMD;
+import yv.tils.adventures.cmd.LightFlightCMD;
 import yv.tils.adventures.cmd.TabComplete;
-import yv.tils.adventures.listener.JoinListener;
-import yv.tils.adventures.listener.GUIClick;
-import yv.tils.adventures.unlock.LevelPath.PlayerEntry;
+import yv.tils.adventures.listener.*;
 import yv.tils.adventures.utils.ConfigModeration;
 import yv.tils.adventures.utils.ConsoleLog;
 import yv.tils.adventures.utils.MessagePlaceholder;
@@ -37,6 +37,11 @@ public final class Adventures extends JavaPlugin {
 
     public List<String> diffitimer = new ArrayList<>();
     public Map<String, String> p = new HashMap<String, String>();
+
+    public HashMap<Player, Long> standingPlayers = new HashMap<>();
+    public List<Player> onFireAbility = new ArrayList<>();
+    public List<Player> LightFlightCooldown = new ArrayList<>();
+
     private static Adventures instance;
     public void onLoad() {
         instance = this;
@@ -70,10 +75,18 @@ public final class Adventures extends JavaPlugin {
         PluginManager manager = Bukkit.getPluginManager();
         manager.registerEvents(new JoinListener(), this);
         manager.registerEvents(new GUIClick(), this);
+        manager.registerEvents(new PlayerDeath_Respawn(), this);
+        manager.registerEvents(new PlayerDamage(), this);
+        manager.registerEvents(new PlayerMove(), this);
+        manager.registerEvents(new PlayerHunger(), this);
+        manager.registerEvents(new BlockBreak(), this);
+        manager.registerEvents(new EntityDeath(), this);
         getCommand("adventure").setExecutor(new CommandHandler());
         getCommand("adventure").setTabCompleter(new TabComplete());
         getCommand("levelpath").setExecutor(new LevelPathCMD());
+        getCommand("lightflight").setExecutor(new LightFlightCMD());
 
+        new PlayerMove().runnable();
         registerUpdateChecker();
 
         new CheckTime().runnable();

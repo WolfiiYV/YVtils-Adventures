@@ -27,6 +27,7 @@ public class TabComplete implements TabCompleter {
             if (args[0].equals("ability")) {
                 results.add("revoke");
                 results.add("path");
+                results.add("lightflight");
             } else if (args[0].equals("difficulty")) {
                 results.add("reset");
             }

@@ -142,7 +142,7 @@ public class SelectDifficulty {
         Bukkit.getConsoleSender().sendMessage(LanguageFile.ListReplacer(LanguageMessage.STOP_MESSAGE, list1, list2));
     }
 
-    public void runnable(Player player) {
+    private void runnable(Player player) {
         new BukkitRunnable() {
             public void run() {
                 Adventures.getInstance().diffitimer.remove(player.getName());
