@@ -1,7 +1,6 @@
 package yv.tils.adventures.unlock.LevelPath;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -11,9 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import yv.tils.adventures.Adventures;
 import yv.tils.adventures.ability.Ability;
-import yv.tils.adventures.difficulty.Difficultys;
 import yv.tils.adventures.difficulty.SelectDifficulty;
-import yv.tils.adventures.utils.ConfigModeration;
 import yv.tils.adventures.utils.ConsoleLog;
 
 import java.io.File;
@@ -134,7 +131,7 @@ public class LevelPath {
         String pabilitys = plist[5];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
-        List<String> abilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
+        List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
 
         int plevel = Integer.parseInt(plist[0]);
 
@@ -145,12 +142,12 @@ public class LevelPath {
                 case 18 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 1) return;
-                        if (!abilitylist.contains(Level.L1.reward)) {
+                        if (!pabilitylist.contains(Level.L1.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 1.\n" +
                                     Level.L1.reward);
                             new SelectDifficulty().DifficultyGUI(player);
-                            abilitylist.add(Level.L1.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L1.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -159,12 +156,12 @@ public class LevelPath {
                 case 30 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 5) return;
-                        if (!abilitylist.contains(Level.L5.reward)) {
+                        if (!pabilitylist.contains(Level.L5.reward) && !pabilitylist.contains(Level.L20.reward) && !pabilitylist.contains(Level.L25.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 5.\n" +
                                     Level.L5.reward);
                             new Ability().MoreLives(player, 1);
-                            abilitylist.add(Level.L5.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L5.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -173,11 +170,11 @@ public class LevelPath {
                 case 23 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 10) return;
-                        if (!abilitylist.contains(Level.L10.reward)) {
+                        if (!pabilitylist.contains(Level.L10.reward) && !pabilitylist.contains(Level.L35.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 10.\n" +
                                     Level.L10.reward);
-                            abilitylist.add(Level.L10.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L10.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -186,11 +183,11 @@ public class LevelPath {
                 case 26 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 15) return;
-                        if (!abilitylist.contains(Level.L15.reward)) {
+                        if (!pabilitylist.contains(Level.L15.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 15.\n" +
                                     Level.L15.reward);
-                            abilitylist.add(Level.L15.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L15.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -207,12 +204,12 @@ public class LevelPath {
                 case 30 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 20) return;
-                        if (!abilitylist.contains(Level.L20.reward)) {
+                        if (!pabilitylist.contains(Level.L20.reward) && !pabilitylist.contains(Level.L25.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 20.\n" +
                                     Level.L20.reward);
                             new Ability().MoreLives(player, 2);
-                            abilitylist.add(Level.L20.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L20.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -221,12 +218,12 @@ public class LevelPath {
                 case 23 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 25) return;
-                        if (!abilitylist.contains(Level.L25.reward)) {
+                        if (!pabilitylist.contains(Level.L25.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 25.\n" +
                                     Level.L25.reward);
                             new Ability().MoreLives(player, 3);
-                            abilitylist.add(Level.L25.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L25.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -235,11 +232,11 @@ public class LevelPath {
                 case 26 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 30) return;
-                        if (!abilitylist.contains(Level.L30.reward)) {
+                        if (!pabilitylist.contains(Level.L30.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 30.\n" +
                                     Level.L30.reward);
-                            abilitylist.add(Level.L30.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L30.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -256,11 +253,11 @@ public class LevelPath {
                 case 30 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 35) return;
-                        if (!abilitylist.contains(Level.L35.reward)) {
+                        if (!pabilitylist.contains(Level.L35.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 35.\n" +
                                     Level.L35.reward);
-                            abilitylist.add(Level.L35.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L35.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -269,11 +266,11 @@ public class LevelPath {
                 case 23 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 40) return;
-                        if (!abilitylist.contains(Level.L40.reward)) {
+                        if (!pabilitylist.contains(Level.L40.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 40.\n" +
                                     Level.L40.reward);
-                            abilitylist.add(Level.L40.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L40.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 
@@ -282,11 +279,11 @@ public class LevelPath {
                 case 26 -> {
                     if (click.isLeftClick()) {
                         if (plevel < 45) return;
-                        if (!abilitylist.contains(Level.L45.reward)) {
+                        if (!pabilitylist.contains(Level.L45.reward)) {
                             new ConsoleLog(player.getName() + " claimed Level 45.\n" +
                                     Level.L45.reward);
-                            abilitylist.add(Level.L45.reward);
-                            ymlfile.set(player.getName() + ".Abilitys", abilitylist);
+                            pabilitylist.add(Level.L45.reward);
+                            ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
                         }
                     } else if (click.isRightClick()) {
 

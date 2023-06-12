@@ -6,6 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import yv.tils.adventures.ability.RevokeAbility;
+import yv.tils.adventures.ability.cmd.LightFlightCMD;
 import yv.tils.adventures.difficulty.ReselectDifficulty;
 import yv.tils.adventures.difficulty.ResetDifficulty;
 import yv.tils.adventures.unlock.LevelPath.LevelPath;

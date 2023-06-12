@@ -3,8 +3,14 @@ TODO
 ADD PERMISSION SYSTEM
     VERY IMPORTANT
 
-LightFlight Command
-    Add Live Cooldown
+Cooldown
+    Add live cooldown's to cmds
+    Save over server restart
+
+Vampire
+    Let players fit through smaller gaps
+    Let players switch dimension while in bat mode
+    Let players combine vampire ability's (Bat & Speed / Bat & Invisibility / Bat & Speed & Invisibility)
 
 Drop Chances
     Make them more lucky (doubled extra drops -> 0.5; tripled extra drops -> 0.3)

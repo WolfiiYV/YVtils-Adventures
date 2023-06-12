@@ -1,13 +1,17 @@
 package yv.tils.adventures;
 
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import yv.tils.adventures.ability.cmd.VampireHandler;
+import yv.tils.adventures.ability.cmd.VampireTabComplete;
 import yv.tils.adventures.cmd.CommandHandler;
 import yv.tils.adventures.cmd.LevelPathCMD;
-import yv.tils.adventures.cmd.LightFlightCMD;
+import yv.tils.adventures.ability.cmd.LightFlightCMD;
 import yv.tils.adventures.cmd.TabComplete;
 import yv.tils.adventures.listener.*;
 import yv.tils.adventures.utils.ConfigModeration;
@@ -21,10 +25,8 @@ import yv.tils.adventures.utils.language.LanguageMessage;
 import yv.tils.adventures.utils.updateutils.JoinAnnouncer;
 import yv.tils.adventures.utils.updateutils.database.VersionChecker;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @since 1.0
@@ -36,11 +38,25 @@ public final class Adventures extends JavaPlugin {
     public boolean database_connection;
 
     public List<String> diffitimer = new ArrayList<>();
-    public Map<String, String> p = new HashMap<String, String>();
+    public Map<String, String> p = new HashMap<>();
 
     public HashMap<Player, Long> standingPlayers = new HashMap<>();
     public List<Player> onFireAbility = new ArrayList<>();
-    public List<Player> LightFlightCooldown = new ArrayList<>();
+    public Cache<Player, Long> LightFlightCooldown = CacheBuilder.newBuilder().expireAfterAccess(10, TimeUnit.MINUTES).build();
+
+    public Cache<Player, Long> Vampire_Invis = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
+    public Cache<Player, Long> Vampire_Speed = CacheBuilder.newBuilder().expireAfterAccess(15, TimeUnit.MINUTES).build();
+    public Cache<Player, Long> Vampire_Transform = CacheBuilder.newBuilder().expireAfterAccess(90, TimeUnit.MINUTES).build();
+
+    public Cache<Player, Long> Vampire_Invis_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
+    public Cache<Player, Long> Vampire_Speed_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
+    public Cache<Player, Long> Vampire_Transform_active = CacheBuilder.newBuilder().expireAfterAccess(15, TimeUnit.MINUTES).build();
+
+    public Map<Player, Long> Vampire_Invis_inactive = new HashMap<>();
+    public Map<Player, Long> Vampire_Speed_inactive = new HashMap<>();
+    public Map<Player, Long> Vampire_Transform_inactive = new HashMap<>();
+
+    public final List<UUID> air = new ArrayList<>();
 
     private static Adventures instance;
     public void onLoad() {
@@ -85,6 +101,8 @@ public final class Adventures extends JavaPlugin {
         getCommand("adventure").setTabCompleter(new TabComplete());
         getCommand("levelpath").setExecutor(new LevelPathCMD());
         getCommand("lightflight").setExecutor(new LightFlightCMD());
+        getCommand("vampire").setExecutor(new VampireHandler());
+        getCommand("vampire").setTabCompleter(new VampireTabComplete());
 
         new PlayerMove().runnable();
         registerUpdateChecker();

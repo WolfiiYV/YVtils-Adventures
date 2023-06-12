@@ -26,3 +26,6 @@ commands:
     description: Players with the ability "LightFlight" can boost themself 50 blocks up into the air
     aliases:
       - boost
+  vampire:
+    permission: yvtils.adventures.cmd
+    description: Command to activate the vampire ability's

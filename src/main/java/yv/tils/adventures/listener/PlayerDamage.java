@@ -17,6 +17,7 @@ import yv.tils.adventures.unlock.LevelPath.Level;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @version 1.0
@@ -30,6 +31,7 @@ public class PlayerDamage implements Listener {
         AlmostPeaceful(e);
         OnFire(e);
         LightFlight(e);
+        Vampire(e);
     }
 
     @EventHandler
@@ -170,6 +172,16 @@ public class PlayerDamage implements Listener {
                     }
                 }
             }
+        }
+    }
+
+    private void Vampire(EntityDamageEvent e) {
+        if (e.getEntityType() == EntityType.PLAYER
+                && (e.getCause() == EntityDamageEvent.DamageCause.FALL)
+                && Adventures.getInstance().air.contains(e.getEntity().getUniqueId())) {
+            e.setCancelled(true);
+            UUID uuid = e.getEntity().getUniqueId();
+            Adventures.getInstance().air.remove(uuid);
         }
     }
 

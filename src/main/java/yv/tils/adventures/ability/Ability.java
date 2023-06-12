@@ -198,7 +198,6 @@ public class Ability {
     //Light Flight
     public void LightFlight(EntityDamageEvent e, Player player, int level) {
         double damage = e.getDamage();
-        System.out.println(damage);
         switch (level) {
             case 1 -> {
                 double d = damage/2;
@@ -236,9 +235,7 @@ public class Ability {
                     e.setCancelled(true);
                 }
             }
-            case 5 -> {
-                e.setCancelled(true);
-            }
+            case 5 -> e.setCancelled(true);
         }
     }
 
@@ -246,6 +243,13 @@ public class Ability {
     public void Vampire(Player player, int level) {
         switch (level) {
             case 1 -> {
+                /*
+                Unsichtbarkeits-Effekt alle 30 Minuten für 5 Minuten? /vampire invis
+                Schneller laufen alle 15 Minuten für 5 Minuten? /vampire speed
+                Bat Transform (Als Fledermaus fliegen) alle 90 Minuten für 15 Minuten? /vampire transform
+                1/3 Damage Steal von Mobs/Spielern/etc
+                 */
+
 
             }
             case 2 -> {
