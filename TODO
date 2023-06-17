@@ -46,7 +46,7 @@ Difficulty's
 
 
 XP Gain
-	Permssions for every level gain method
+	Permissions for every level gain method
 
 	Advancements
 		Different amounts of xp, for complicated achievements
@@ -57,7 +57,7 @@ Log System
 
 	Option to (de-)activate logging
 
-	Debuging to almost everything
+	Debugging to almost everything
 
 
 Language System
@@ -67,10 +67,10 @@ Language System
 "API" for things like level gain, and more
 
 
-More customizability options
-	Own difficulty's & abillty's
+More customizable options
+	Own difficulty's & ability's
 
 
 Help Commands & GUI
-	First GUI window with oprion beetween ability's and difficulty's
+	First GUI window with option between ability's and difficulty's
 		Explanation of every ability & difficulty
