@@ -4,11 +4,13 @@ import org.bukkit.EntityEffect;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import yv.tils.adventures.Adventures;
+import yv.tils.adventures.unlock.LevelPath.XPGain.XPManager;
 
 /**
  * @version 1.0
@@ -240,17 +242,18 @@ public class Ability {
     }
 
     //Vampire Ability
-    public void Vampire(Player player, int level) {
+    public void Vampire(int level, EntityDamageByEntityEvent e) {
+        double damage = e.getDamage();
+        Player player = (Player) e.getDamager();
+
         switch (level) {
             case 1 -> {
-                /*
-                Unsichtbarkeits-Effekt alle 30 Minuten für 5 Minuten? /vampire invis
-                Schneller laufen alle 15 Minuten für 5 Minuten? /vampire speed
-                Bat Transform (Als Fledermaus fliegen) alle 90 Minuten für 15 Minuten? /vampire transform
-                1/3 Damage Steal von Mobs/Spielern/etc
-                 */
-
-
+                double d = damage*((double) 1/3);
+                if (player.getHealth() + d <= player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()) {
+                    player.setHealth(player.getHealth() + d);
+                }else {
+                    player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+                }
             }
             case 2 -> {
 
@@ -271,7 +274,10 @@ public class Ability {
     public void TheEnd(Player player, int level) {
         switch (level) {
             case 1 -> {
-
+                player.sendMessage("You complete the first Chapter! \n" +
+                        "There will soon be more!");
+                player.playSound(player.getLocation(), Sound.UI_TOAST_CHALLENGE_COMPLETE, 1F, 1.4F);
+                new XPManager().onGainEvent(player, 5000, "The End I");
             }
             case 2 -> {
 

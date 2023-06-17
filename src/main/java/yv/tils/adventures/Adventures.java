@@ -47,14 +47,16 @@ public final class Adventures extends JavaPlugin {
     public Cache<Player, Long> Vampire_Invis = CacheBuilder.newBuilder().expireAfterAccess(30, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Speed = CacheBuilder.newBuilder().expireAfterAccess(15, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Transform = CacheBuilder.newBuilder().expireAfterAccess(90, TimeUnit.MINUTES).build();
-
     public Cache<Player, Long> Vampire_Invis_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Speed_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Transform_active = CacheBuilder.newBuilder().expireAfterAccess(15, TimeUnit.MINUTES).build();
-
     public Map<Player, Long> Vampire_Invis_inactive = new HashMap<>();
     public Map<Player, Long> Vampire_Speed_inactive = new HashMap<>();
     public Map<Player, Long> Vampire_Transform_inactive = new HashMap<>();
+
+    public List<UUID> dailyJoinXP = new ArrayList<>();
+    public Map<Player, Integer> PlayTimeTracker = new HashMap<>();
+    public List<Player> PlayTimeTrackerAFK = new ArrayList<>();
 
     public final List<UUID> air = new ArrayList<>();
 
@@ -90,6 +92,7 @@ public final class Adventures extends JavaPlugin {
 
         PluginManager manager = Bukkit.getPluginManager();
         manager.registerEvents(new JoinListener(), this);
+        manager.registerEvents(new QuitListener(), this);
         manager.registerEvents(new GUIClick(), this);
         manager.registerEvents(new PlayerDeath_Respawn(), this);
         manager.registerEvents(new PlayerDamage(), this);
@@ -97,6 +100,7 @@ public final class Adventures extends JavaPlugin {
         manager.registerEvents(new PlayerHunger(), this);
         manager.registerEvents(new BlockBreak(), this);
         manager.registerEvents(new EntityDeath(), this);
+        manager.registerEvents(new PlayerAdvancement(), this);
         getCommand("adventure").setExecutor(new CommandHandler());
         getCommand("adventure").setTabCompleter(new TabComplete());
         getCommand("levelpath").setExecutor(new LevelPathCMD());

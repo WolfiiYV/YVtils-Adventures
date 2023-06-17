@@ -31,13 +31,14 @@ public class PlayerDamage implements Listener {
         AlmostPeaceful(e);
         OnFire(e);
         LightFlight(e);
-        Vampire(e);
+        VampireBat(e);
     }
 
     @EventHandler
     public void onEvent(EntityDamageByEntityEvent e) {
         RuthlessRumble_GetDamage(e);
         RuthlessRumble_MakeDamage(e);
+        Vampire_LifeSteal(e);
     }
 
     private void IllSpareYourLife(EntityDamageEvent e) {
@@ -175,13 +176,44 @@ public class PlayerDamage implements Listener {
         }
     }
 
-    private void Vampire(EntityDamageEvent e) {
+    private void VampireBat(EntityDamageEvent e) {
         if (e.getEntityType() == EntityType.PLAYER
                 && (e.getCause() == EntityDamageEvent.DamageCause.FALL)
                 && Adventures.getInstance().air.contains(e.getEntity().getUniqueId())) {
             e.setCancelled(true);
             UUID uuid = e.getEntity().getUniqueId();
             Adventures.getInstance().air.remove(uuid);
+        }
+    }
+
+    private void Vampire_LifeSteal(EntityDamageByEntityEvent e) {
+        if (e.getDamager().getType() != EntityType.PLAYER) return;
+        if (!(e.getDamager() instanceof Player player)) return;
+
+        String p = Adventures.getInstance().p.get(player.getName());
+        String[] plist = p.split(";");
+        String pabilitys = plist[5];
+        pabilitys = pabilitys.replace("[", "");
+        pabilitys = pabilitys.replace("]", "");
+        List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
+
+        if (pabilitylist.contains(Level.L40.reward)) {
+            if (pabilitylist.contains("TBA")) {
+                new Ability().Vampire(5, e);
+                return;
+            } else if (pabilitylist.contains("TBA")) {
+                new Ability().Vampire(4, e);
+                return;
+            } else if (pabilitylist.contains("TBA")) {
+                new Ability().Vampire(3, e);
+                return;
+            } else if (pabilitylist.contains("TBA")) {
+                new Ability().Vampire(2, e);
+                return;
+            } else if (pabilitylist.contains(Level.L40.reward)) {
+                new Ability().Vampire(1, e);
+                return;
+            }
         }
     }
 

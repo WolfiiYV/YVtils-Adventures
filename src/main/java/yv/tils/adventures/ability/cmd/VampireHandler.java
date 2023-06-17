@@ -43,25 +43,77 @@ public class VampireHandler implements CommandExecutor {
         switch (args[0]) {
             case "invis" -> {
                 if (main.Vampire_Invis.asMap().containsKey(player)) {
-                    long cooldown_remaining = (main.Vampire_Invis.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
-                    sender.sendMessage("You are still on cooldown. (~" + cooldown_remaining + " Minutes)");
-                    return false;
+                    if (main.Vampire_Invis_active.asMap().containsKey(player)) {
+                        long time_remaining = (main.Vampire_Invis_active.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
+                        sender.sendMessage("Your ability is active. (~" + time_remaining + " Minutes)");
+
+                        player.removePotionEffect(PotionEffectType.INVISIBILITY);
+                        player.sendMessage("You are now visible again!");
+
+                        main.Vampire_Invis_inactive.put(player, main.Vampire_Invis_active.asMap().get(player) - System.currentTimeMillis());
+                        main.Vampire_Invis_active.asMap().remove(player);
+
+                        return false;
+                    } else if (main.Vampire_Invis_inactive.containsKey(player)) {
+                        if (main.Vampire_Invis.asMap().containsKey(player)) {
+
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, PotionEffect.INFINITE_DURATION, 0, false, true, false));
+
+                            long restTime = main.Vampire_Invis_inactive.get(player);
+                            long time_remaining = (restTime)  / (1000 * 60);
+                            Invis_Cooldown(player, (restTime/1000*20));
+                            sender.sendMessage("You have " + time_remaining + " minutes left!");
+
+                            main.Vampire_Invis_active.put(player, System.currentTimeMillis() + restTime);
+                            return false;
+                        }
+                    } else {
+                        long cooldown_remaining = (main.Vampire_Invis.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
+                        sender.sendMessage("You are still on cooldown. (~" + cooldown_remaining + " Minutes)");
+                        return false;
+                    }
                 }
                 player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, PotionEffect.INFINITE_DURATION, 0, false, true, false));
                 main.Vampire_Invis_active.put(player, System.currentTimeMillis() + 300000);
                 main.Vampire_Invis.put(player, System.currentTimeMillis() + 1800000);
-                Invis_Cooldown(player);
+                Invis_Cooldown(player, 6000L);
             }
             case "speed" -> {
                 if (main.Vampire_Speed.asMap().containsKey(player)) {
-                    long cooldown_remaining = (main.Vampire_Speed.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
-                    sender.sendMessage("You are still on cooldown. (~" + cooldown_remaining + " Minutes)");
-                    return false;
+                    if (main.Vampire_Speed_active.asMap().containsKey(player)) {
+                        long time_remaining = (main.Vampire_Speed_active.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
+                        sender.sendMessage("Your ability is active. (~" + time_remaining + " Minutes)");
+
+                        player.removePotionEffect(PotionEffectType.SPEED);
+                        player.sendMessage("You are now slow again!");
+
+                        main.Vampire_Speed_inactive.put(player, main.Vampire_Speed_active.asMap().get(player) - System.currentTimeMillis());
+                        main.Vampire_Speed_active.asMap().remove(player);
+
+                        return false;
+                    } else if (main.Vampire_Speed_inactive.containsKey(player)) {
+                        if (main.Vampire_Speed.asMap().containsKey(player)) {
+
+                            player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, PotionEffect.INFINITE_DURATION, 4, false, false, false));
+
+                            long restTime = main.Vampire_Speed_inactive.get(player);
+                            long time_remaining = (restTime)  / (1000 * 60);
+                            Speed_Cooldown(player, (restTime/1000*20));
+                            sender.sendMessage("You have " + time_remaining + " minutes left!");
+
+                            main.Vampire_Speed_active.put(player, System.currentTimeMillis() + restTime);
+                            return false;
+                        }
+                    } else {
+                        long cooldown_remaining = (main.Vampire_Speed.asMap().get(player) - System.currentTimeMillis())  / (1000 * 60);
+                        sender.sendMessage("You are still on cooldown. (~" + cooldown_remaining + " Minutes)");
+                        return false;
+                    }
                 }
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, PotionEffect.INFINITE_DURATION, 4, false, false, false));
                 main.Vampire_Speed_active.put(player, System.currentTimeMillis() + 300000);
                 main.Vampire_Speed.put(player, System.currentTimeMillis() + 900000);
-                Speed_Cooldown(player);
+                Speed_Cooldown(player, 6000L);
             }
             case "transform" -> {
                 if (main.Vampire_Transform.asMap().containsKey(player)) {
@@ -160,12 +212,13 @@ public class VampireHandler implements CommandExecutor {
         return false;
     }
 
-    private void Invis_Cooldown(Player player) {
+    private void Invis_Cooldown(Player player, Long timer) {
         /*
         Unsichtbarkeit-Effekt alle 30 Minuten für 5 Minuten? /vampire invis
          */
         new BukkitRunnable() {
             public void run() {
+                if (!main.Vampire_Invis_active.asMap().containsKey(player)) return;
                 player.sendMessage("You are visible again in 30 seconds!");
 
                 new BukkitRunnable() {
@@ -176,15 +229,16 @@ public class VampireHandler implements CommandExecutor {
                 }.runTaskLater(Adventures.getInstance(), 600L);
 
             }
-        }.runTaskLater(Adventures.getInstance(), 5400L);
+        }.runTaskLater(Adventures.getInstance(), timer-600);
     }
 
-    private void Speed_Cooldown(Player player) {
+    private void Speed_Cooldown(Player player, Long timer) {
         /*
         Schneller laufen alle 15 Minuten für 5 Minuten? /vampire speed
          */
         new BukkitRunnable() {
             public void run() {
+                if (!main.Vampire_Speed_active.asMap().containsKey(player)) return;
                 player.sendMessage("You are slower again in 30 seconds!");
 
                 new BukkitRunnable() {
@@ -195,7 +249,7 @@ public class VampireHandler implements CommandExecutor {
                 }.runTaskLater(Adventures.getInstance(), 600L);
 
             }
-        }.runTaskLater(Adventures.getInstance(), 5400L);
+        }.runTaskLater(Adventures.getInstance(), timer-600);
     }
 
     private void Transform_Cooldown(Player player, Entity mob, AreaEffectCloud mob2, Long timer) {
@@ -204,11 +258,11 @@ public class VampireHandler implements CommandExecutor {
          */
         new BukkitRunnable() {
             public void run() {
+                if (!main.Vampire_Transform_active.asMap().containsKey(player)) return;
                 player.sendMessage("You will transform back in 30 seconds!");
 
                 new BukkitRunnable() {
                     public void run() {
-                        if (!main.Vampire_Transform_active.asMap().containsKey(player)) return;
                         System.out.println("You transformed back");
                         player.sendMessage("You have transformed back!");
                         player.setCustomNameVisible(true);

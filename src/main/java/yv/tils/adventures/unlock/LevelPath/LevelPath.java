@@ -284,6 +284,7 @@ public class LevelPath {
                                     Level.L45.reward);
                             pabilitylist.add(Level.L45.reward);
                             ymlfile.set(player.getName() + ".Abilitys", pabilitylist);
+                            new Ability().TheEnd(player, 1);
                         }
                     } else if (click.isRightClick()) {
 

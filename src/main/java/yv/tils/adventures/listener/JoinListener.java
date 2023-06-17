@@ -11,6 +11,9 @@ import yv.tils.adventures.difficulty.ExecuteDifficulty;
 import yv.tils.adventures.difficulty.SelectDifficulty;
 import yv.tils.adventures.unlock.LevelPath.LevelPath;
 import yv.tils.adventures.unlock.LevelPath.PlayerEntry;
+import yv.tils.adventures.unlock.LevelPath.XPGain.DailyJoin;
+import yv.tils.adventures.unlock.LevelPath.XPGain.PlayTime;
+import yv.tils.adventures.unlock.LevelPath.XPGain.XPManager;
 
 /**
  * @version 1.0
@@ -21,6 +24,10 @@ public class JoinListener implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         new LevelPath().getXP(e.getPlayer(), "join_streak");
         new PlayerEntry().onJoin(e);
+        new DailyJoin().onDailyJoin(e);
+        new PlayTime().startTracking(e.getPlayer());
+
+        new XPManager().onGainEvent(e.getPlayer(), 0, "Level Refresh");
 
         String p = Adventures.getInstance().p.get(e.getPlayer().getName());
         String[] plist = p.split(";");

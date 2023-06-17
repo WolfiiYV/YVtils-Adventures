@@ -86,7 +86,11 @@ L30: 1800XP
     L42(42, 4500, "null", ""),
     L43(43, 5000, "null", ""),
     L44(44, 5500, "null", ""),
-    L45(45, 6000, "The End I", "");
+    L45(45, 6000, "The End I", ""),
+
+
+    //Extra Level, make it unreachable
+    L46(46, 999999999, "", "");
 
 
     public final int level;

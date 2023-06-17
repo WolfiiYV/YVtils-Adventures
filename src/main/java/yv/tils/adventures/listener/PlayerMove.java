@@ -43,11 +43,26 @@ public class PlayerMove implements Listener {
         }
     }
 
+    private void PlayTimeTracker() {
+        for (Player player : Adventures.getInstance().standingPlayers.keySet()) {
+            long currentTime = System.currentTimeMillis();
+            long startTime = Adventures.getInstance().standingPlayers.get(player);
+            long standingTime = (currentTime - startTime) / 1000;
+
+            if (standingTime >= 300) {
+                Adventures.getInstance().PlayTimeTrackerAFK.add(player);
+            }else if (Adventures.getInstance().PlayTimeTrackerAFK.contains(player)){
+                Adventures.getInstance().PlayTimeTrackerAFK.remove(player);
+            }
+        }
+    }
+
     public void runnable() {
         new BukkitRunnable() {
             @Override
             public void run() {
                 AlmostPeaceful();
+                PlayTimeTracker();
             }
         }.runTaskTimer(Adventures.getInstance(), 20L, 20L); // Delay 1 second, repeat every second
     }

@@ -1,13 +1,11 @@
 package yv.tils.adventures;
 
 import org.bukkit.scheduler.BukkitRunnable;
-import yv.tils.adventures.utils.ConfigModeration;
 import yv.tils.adventures.utils.ConsoleLog;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,9 +40,10 @@ public class CheckTime {
                     Date x = calendar3.getTime();
                     if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())) {
                         new ConsoleLog("Resetting daily playtime");
+                        Adventures.getInstance().dailyJoinXP.clear();
                     }
                 } catch (ParseException ignored) {}
             }
-        }.runTaskTimer(Adventures.getInstance(), 0L, 200L);
+        }.runTaskTimerAsynchronously(Adventures.getInstance(), 0L, 200L);
     }
 }

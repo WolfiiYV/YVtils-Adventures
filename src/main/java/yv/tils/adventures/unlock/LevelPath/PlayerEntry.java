@@ -14,12 +14,11 @@ import java.util.List;
 /**
  * @version 1.0
  * @since 1.0
+ *
+ * level,xp,joinstreak,playtimeall,playtimeday,ablitys,difficulty
+ *
  */
 public class PlayerEntry {
-    /**
-     * level,xp,joinstreak,playtimeall,playtimeday,ablitys,difficulty
-     */
-
     File file = new File(Adventures.getInstance().getDataFolder(), "level-path.yml");
     YamlConfiguration ymlfile = YamlConfiguration.loadConfiguration(file);
 

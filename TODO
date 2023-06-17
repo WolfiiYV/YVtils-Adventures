@@ -1,76 +1,76 @@
 TODO
 
-ADD PERMISSION SYSTEM
-    VERY IMPORTANT
+Permissions
+	Commands (i.e. Difficulty / Ability Reset)
+	XP Gain
 
-Cooldown
-    Add live cooldown's to cmds
-    Save over server restart
-
-Vampire
-    Let players fit through smaller gaps
-    Let players switch dimension while in bat mode
-    Let players combine vampire ability's (Bat & Speed / Bat & Invisibility / Bat & Speed & Invisibility)
-
-Drop Chances
-    Make them more lucky (doubled extra drops -> 0.5; tripled extra drops -> 0.3)
 
 Level Path
-    Left-click: Claim ability
-    Right-click: Info of ability
-    Hover: Show information's about the Level
-    (Maybe animate side switch)
-    Upgrade XP for Difficulty's (Make the Difficulty's better)
+	Right Click: Info about ability
 
-Log System for difficultys & abillitys
-    Extra Files?
-    Be able to (de-)activate the logging
-    Add debug options for everything
+	Show if level was claimed
 
-Faster Mining
-    Maybe change from Haste Effect to https://github.com/jordoncodes/MiningSpeed/tree/main
-    (https://discord.com/channels/397526357191557121/1044230223513784350)
+	Side switch animation?
 
-Careful Snail
-    Add replaceable blocks like Ancient Debris to doubled drops
+	Difficulty upgrade xp?
+
+
+Ability's
+	Vampire
+		Let players fit through smaller gaps
+		Let players switch dimension while in bat mode
+		Let players combine vampire ability's (Bat & Speed / Bat & Invisibility / Bat & Speed & Invisibility)
+
+	GUI to (de-)activate ability's
+
+	I'll spare your life
+		Level 5:
+			Pay 10XP Level and become perks of Level 4, but 3x longer totem effects
+			or pay 15XP level and become 2x extra hearts and 3x longer totem effects
+
+
+Difficulty's
+	Drop chances
+		Make them more random
+
+	Mining
+		Maybe change from Haste Effect to https://github.com/jordoncodes/MiningSpeed/tree/main
+		(https://discord.com/channels/397526357191557121/1044230223513784350)
+
+	Careful Snail
+		Add replaceable blocks like Ancient Debris to better drops
+
+	Item to change difficulty?
+
+	Upgrades?
+
+
+XP Gain
+	Permssions for every level gain method
+
+	Advancements
+		Different amounts of xp, for complicated achievements
+
+
+Log System
+	As extra files?
+
+	Option to (de-)activate logging
+
+	Debuging to almost everything
+
 
 Language System
-    DE & EN
+	DE & EN
 
-Add first ability's and difficulty's
 
-I'll spare your life
-    Level 5:
-        Pay 10XP Level and become perks of Level 4, but 3x longer totem effects
-        or pay 15XP level and become 2x extra hearts and 3x longer totem effects
+"API" for things like level gain, and more
 
-First Join -> Choose custom difficulty
-    (Maybe add previews/tutorials)
 
-Add local API for things like level path/gui/one time payment/...
+More customizability options
+	Own difficulty's & abillty's
 
-Option to create own difficulty's/ability's
 
-Item to change difficulty?
-    If yes which item?
-
-Difficulty reset command
-    Admin only
-    /adventure difficulty reset [player]
-
-Ability revoke command
-    Admin only
-    /adventure ability revoke [player] {ability}
-
-Add a option to upgrade difficulty's
-    (Add commands to change upgraded level?)
-
-Help Command/GUI
-    When GUI:
-        First GUI with two Items -> Choose Difficulty/Ability
-            Difficulty:
-                Explanation for every difficulty
-                How to create own difficulty's
-            Ability:
-                Explanation for every ability
-                How to create own ability's
+Help Commands & GUI
+	First GUI window with oprion beetween ability's and difficulty's
+		Explanation of every ability & difficulty
