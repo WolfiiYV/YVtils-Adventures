@@ -51,7 +51,7 @@ public class PlayerDamage implements Listener {
 
             String p = Adventures.getInstance().p.get(player.getName());
             String[] plist = p.split(";");
-            String pabilitys = plist[5];
+            String pabilitys = plist[6];
             pabilitys = pabilitys.replace("[", "");
             pabilitys = pabilitys.replace("]", "");
             List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -83,7 +83,7 @@ public class PlayerDamage implements Listener {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D1.name))) {
             double damage = e.getFinalDamage();
@@ -97,7 +97,7 @@ public class PlayerDamage implements Listener {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D2.name))) {
             double damage = e.getFinalDamage();
@@ -113,7 +113,7 @@ public class PlayerDamage implements Listener {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D6.name))) {
             double damage = e.getFinalDamage();
@@ -128,7 +128,7 @@ public class PlayerDamage implements Listener {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D6.name))) {
             double damage = e.getFinalDamage();
@@ -143,7 +143,7 @@ public class PlayerDamage implements Listener {
         if (!(e.getEntity() instanceof Player player)) return;
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -192,7 +192,7 @@ public class PlayerDamage implements Listener {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -222,7 +222,7 @@ public class PlayerDamage implements Listener {
         if (!(e.getEntity() instanceof Player player)) return;
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));

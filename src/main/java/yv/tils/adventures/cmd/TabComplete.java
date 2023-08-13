@@ -42,7 +42,7 @@ public class TabComplete implements TabCompleter {
 
                 //30;200;0;0;0;[1, 2, 3];Almost Peaceful
 
-                String pabilitys = plist[5];
+                String pabilitys = plist[6];
                 pabilitys = pabilitys.replace("[", "");
                 pabilitys = pabilitys.replace("]", "");
                 String[] abilitylist = pabilitys.split(", ");

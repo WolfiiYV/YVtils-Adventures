@@ -33,6 +33,7 @@ public class PlayerEntry {
         ymlfile.addDefault("PLAYER.Level", "x");
         ymlfile.addDefault("PLAYER.XP", "x");
         ymlfile.addDefault("PLAYER.JoinStreak", "x");
+        ymlfile.set(player.getName() + ".JoinStreakClaimed", x);
         ymlfile.addDefault("PLAYER.PlayTimeAll", "x");
         ymlfile.addDefault("PLAYER.PlayTimeDay", "x");
         ymlfile.addDefault("PLAYER.Abilitys", "x");
@@ -44,6 +45,7 @@ public class PlayerEntry {
         ymlfile.set(player.getName() + ".Level", 0);
         ymlfile.set(player.getName() + ".XP", 0);
         ymlfile.set(player.getName() + ".JoinStreak", 0);
+        ymlfile.set(player.getName() + ".JoinStreakClaimed", false);
         ymlfile.set(player.getName() + ".PlayTimeAll", 0);
         ymlfile.set(player.getName() + ".PlayTimeDay", 0);
         ymlfile.set(player.getName() + ".Abilitys", list);
@@ -54,21 +56,26 @@ public class PlayerEntry {
             throw new RuntimeException(e);
         }
 
-        Adventures.getInstance().p.put(player.getName(), 0 + ";" + 0 + ";" + 0 + ";" + 0 + ";" + 0 + ";" + list + ";" + "none");
+        Adventures.getInstance().p.put(player.getName(), 0 + ";" + 0 + ";" + 0 + ";" + false + ";" + 0 + ";" + 0 + ";" + list + ";" + "none");
     }
 
     public void configGetter(Player player) {
         int level = ymlfile.getInt(player.getName() + ".Level");
         int xp = ymlfile.getInt(player.getName() + ".XP");
         int joinstreak = ymlfile.getInt(player.getName() + ".JoinStreak");
+        boolean joinstreakclaimed = ymlfile.getBoolean(player.getName() + ".JoinStreakClaimed");
         int playtimeall = ymlfile.getInt(player.getName() + ".PlayTimeAll");
         int playtimeday = ymlfile.getInt(player.getName() + ".PlayTimeDay");
         List<String> ablitys = ymlfile.getStringList(player.getName() + ".Abilitys");
         String difficulty = ymlfile.getString(player.getName() + ".Difficulty");
 
-        Adventures.getInstance().p.put(player.getName(), level + ";" + xp + ";" + joinstreak + ";" + playtimeall + ";" + playtimeday + ";" + ablitys + ";" + difficulty);
+        if (Adventures.getInstance().p.containsKey(player.getName())) {
+            Adventures.getInstance().p.remove(player.getName());
+        }
 
-        new ConsoleLog(player.getName() + ": " + level + ";" + xp + ";" + joinstreak + ";" + playtimeall + ";" + playtimeday + ";" + ablitys + ";" + difficulty);
+        Adventures.getInstance().p.put(player.getName(), level + ";" + xp + ";" + joinstreak + ";" + joinstreakclaimed + ";" + playtimeall + ";" + playtimeday + ";" + ablitys + ";" + difficulty);
+
+        new ConsoleLog(player.getName() + ": " + level + ";" + xp + ";" + joinstreak + ";" + joinstreakclaimed + ";" + playtimeall + ";" + playtimeday + ";" + ablitys + ";" + difficulty);
         new ConsoleLog(Adventures.getInstance().p.get(player.getName()));
     }
 }

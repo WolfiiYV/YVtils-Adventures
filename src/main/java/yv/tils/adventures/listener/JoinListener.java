@@ -22,7 +22,6 @@ import yv.tils.adventures.unlock.LevelPath.XPGain.XPManager;
 public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        new LevelPath().getXP(e.getPlayer(), "join_streak");
         new PlayerEntry().onJoin(e);
         new DailyJoin().onDailyJoin(e);
         new PlayTime().startTracking(e.getPlayer());
@@ -31,7 +30,7 @@ public class JoinListener implements Listener {
 
         String p = Adventures.getInstance().p.get(e.getPlayer().getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D7.name))) {
             new ExecuteDifficulty().SwiftHunger_Effects(e.getPlayer());

@@ -8,11 +8,13 @@ Permissions
 Level Path
 	Right Click: Info about ability
 
-	Show if level was claimed
+x	Show if level was claimed
 
 	Side switch animation?
 
 	Difficulty upgrade xp?
+
+	Change from Player Names to UUID's that name changes won't affect reset
 
 
 Ability's
@@ -20,6 +22,8 @@ Ability's
 		Let players fit through smaller gaps
 		Let players switch dimension while in bat mode
 		Let players combine vampire ability's (Bat & Speed / Bat & Invisibility / Bat & Speed & Invisibility)
+		Player dies = Can't transform again
+		Don't disable fly for players in gamemodes
 
 	GUI to (de-)activate ability's
 
@@ -30,6 +34,10 @@ Ability's
 
 
 Difficulty's
+    Claiming
+x       Closing GUI without choosing looks difficulty to none
+        Death also ^
+
 	Drop chances
 		Make them more random
 
@@ -44,9 +52,13 @@ Difficulty's
 
 	Upgrades?
 
+Cooldown
+    Admin command to reset player cooldown
+    Bossbar/Level Bar show left time
 
 XP Gain
 	Permissions for every level gain method
+	Daily & All-time Playtime
 
 	Advancements
 		Different amounts of xp, for complicated achievements
@@ -74,3 +86,8 @@ More customizable options
 Help Commands & GUI
 	First GUI window with option between ability's and difficulty's
 		Explanation of every ability & difficulty
+
+Bugs
+    Vampire cooldown reset after rejoin
+        Cooldowns in general I think
+    Fix Claim info on items (Not directly switching to claimed)

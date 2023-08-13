@@ -20,6 +20,7 @@ public class LevelPathConfig {
     	- Level: 1
     	- XP: 500
     	- JoinStreak: 4
+    	- JoinStreakClaimed: false
     	- PlayTimeAll: 4.3 (4h 30min) / 4 (4h) / 4.24 (4h 24min)
     	- PlaytimeDay:
     	- Abilitys: [Fly,Vampire]
@@ -30,6 +31,7 @@ public class LevelPathConfig {
         ymlfile.addDefault("PLAYER.Level", "x");
         ymlfile.addDefault("PLAYER.XP", "x");
         ymlfile.addDefault("PLAYER.JoinStreak", "x");
+        ymlfile.addDefault("PLAYER.JoinStreakClaimed", "x");
         ymlfile.addDefault("PLAYER.PlayTimeAll", "x");
         ymlfile.addDefault("PLAYER.PlayTimeDay", "x");
         ymlfile.addDefault("PLAYER.Abilitys", "x");

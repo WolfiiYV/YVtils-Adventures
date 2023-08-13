@@ -106,10 +106,12 @@ public class SelectDifficulty {
             case 12 -> {
                 list2.add(Difficultys.D3.name);
                 new ConfigModeration().ConfigContentAdd("level-path", player.getName() + ".Difficulty", ChatColor.stripColor(Difficultys.D3.name));
+                new ExecuteDifficulty().CarelessCheetah_Movement(player);
             }
             case 22 -> {
                 list2.add(Difficultys.D4.name);
                 new ConfigModeration().ConfigContentAdd("level-path", player.getName() + ".Difficulty", ChatColor.stripColor(Difficultys.D4.name));
+                new ExecuteDifficulty().CarefulSnail_Movement(player);
             }
             case 14 -> {
                 list2.add(Difficultys.D5.name);
@@ -122,6 +124,7 @@ public class SelectDifficulty {
             case 16 -> {
                 list2.add(Difficultys.D7.name);
                 new ConfigModeration().ConfigContentAdd("level-path", player.getName() + ".Difficulty", ChatColor.stripColor(Difficultys.D7.name));
+                new ExecuteDifficulty().SwiftHunger_Effects(player);
             }
         }
 

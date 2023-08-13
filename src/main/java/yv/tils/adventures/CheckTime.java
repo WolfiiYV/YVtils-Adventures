@@ -1,8 +1,14 @@
 package yv.tils.adventures;
 
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import yv.tils.adventures.utils.ConsoleLog;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,8 +45,21 @@ public class CheckTime {
 
                     Date x = calendar3.getTime();
                     if (x.after(calendar1.getTime()) && x.before(calendar2.getTime())) {
-                        new ConsoleLog("Resetting daily playtime");
-                        Adventures.getInstance().dailyJoinXP.clear();
+                        new ConsoleLog("Resetting daily stats");
+
+                        File file = new File(Adventures.getInstance().getDataFolder(), "level-path.yml");
+                        YamlConfiguration ymlfile = YamlConfiguration.loadConfiguration(file);
+
+                        for (OfflinePlayer player : Bukkit.getOfflinePlayers()) {
+                            ymlfile.set(player.getName() + ".JoinStreakClaimed", false);
+                            new ConsoleLog("The Daily-Join of " + player.getName() + " got cleared!");
+                        }
+
+                        try {
+                            ymlfile.save(file);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 } catch (ParseException ignored) {}
             }

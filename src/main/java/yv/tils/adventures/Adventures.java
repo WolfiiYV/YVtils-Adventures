@@ -49,12 +49,11 @@ public final class Adventures extends JavaPlugin {
     public Cache<Player, Long> Vampire_Transform = CacheBuilder.newBuilder().expireAfterAccess(90, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Invis_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
     public Cache<Player, Long> Vampire_Speed_active = CacheBuilder.newBuilder().expireAfterAccess(5, TimeUnit.MINUTES).build();
-    public Cache<Player, Long> Vampire_Transform_active = CacheBuilder.newBuilder().expireAfterAccess(15, TimeUnit.MINUTES).build();
+    public Cache<Player, Long> Vampire_Transform_active = CacheBuilder.newBuilder().expireAfterAccess(10, TimeUnit.MINUTES).build();
     public Map<Player, Long> Vampire_Invis_inactive = new HashMap<>();
     public Map<Player, Long> Vampire_Speed_inactive = new HashMap<>();
     public Map<Player, Long> Vampire_Transform_inactive = new HashMap<>();
 
-    public List<UUID> dailyJoinXP = new ArrayList<>();
     public Map<Player, Integer> PlayTimeTracker = new HashMap<>();
     public List<Player> PlayTimeTrackerAFK = new ArrayList<>();
 
@@ -101,6 +100,8 @@ public final class Adventures extends JavaPlugin {
         manager.registerEvents(new BlockBreak(), this);
         manager.registerEvents(new EntityDeath(), this);
         manager.registerEvents(new PlayerAdvancement(), this);
+        manager.registerEvents(new PlayerMilk(), this);
+        manager.registerEvents(new PlayerTotemPop(), this);
         getCommand("adventure").setExecutor(new CommandHandler());
         getCommand("adventure").setTabCompleter(new TabComplete());
         getCommand("levelpath").setExecutor(new LevelPathCMD());

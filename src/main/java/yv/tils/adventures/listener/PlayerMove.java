@@ -35,7 +35,7 @@ public class PlayerMove implements Listener {
         for (Player player : Adventures.getInstance().standingPlayers.keySet()) {
             String p = Adventures.getInstance().p.get(player.getName());
             String[] plist = p.split(";");
-            String pdifficulty = plist[6];
+            String pdifficulty = plist[7];
 
             if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D2.name))) {
                 new ExecuteDifficulty().AlmostPeaceful_Movement(player);

@@ -41,7 +41,7 @@ public class RevokeAbility {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> abilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -52,8 +52,6 @@ public class RevokeAbility {
         }
         String ability = builder.toString();
         ability = ability.trim();
-
-        System.out.println(ability);
 
         abilitylist.remove(ability);
         ymlfile.set(player.getName() + ".Abilitys", abilitylist);

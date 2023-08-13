@@ -38,13 +38,19 @@ public class LevelPath {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
+        String pabilitys = plist[6];
+        pabilitys = pabilitys.replace("[", "");
+        pabilitys = pabilitys.replace("]", "");
+        List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
 
         int plevel = Integer.parseInt(plist[0]);
         int pxp = Integer.parseInt(plist[1]);
 
         int j = 1;
         for (int i : new int[]{18,19,28,29,30,21,12,13,14,23,32,33,34,25,26}) {
-            inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward));
+            boolean claimed = pabilitylist.contains(Level.valueOf("L" + j).reward);
+
+            inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward, claimed));
             j++;
         }
 
@@ -64,7 +70,7 @@ public class LevelPath {
         player.openInventory(inv);
     }
 
-    private ItemStack LevelItem(int level, int player_xp, int needed_xp, int playerlevel, String reward) {
+    private ItemStack LevelItem(int level, int player_xp, int needed_xp, int playerlevel, String reward, boolean claimed) {
         if (Objects.equals(reward, "null")) reward = "§7There is no reward for this level!";
         if (playerlevel >= level) {
             //Player has level
@@ -72,6 +78,8 @@ public class LevelPath {
             ItemMeta meta_pane = pane.getItemMeta();
             List<String> lore = new ArrayList<>();
             meta_pane.setDisplayName("§l§aLevel " + level + " §8(§7" + needed_xp + "§8/§7" + needed_xp + "§8)");
+            if (claimed) lore.add("§aLevel Claimed");
+            if (!claimed) lore.add("§cLevel Unclaimed");
             lore.add("§fReward: §6" + reward);
             lore.add("§fLeft-click: §7Claim");
             lore.add("§fRight-click: §7Ability Info");
@@ -86,6 +94,8 @@ public class LevelPath {
             List<String> lore = new ArrayList<>();
             if (playerlevel + 1 == level) meta_pane.setDisplayName("§l§cLevel " + level + " §8(§7" + player_xp + "§8/§7" + needed_xp + "§8)");
             else meta_pane.setDisplayName("§l§cLevel " + level + " §8(§7" + "0" + "§8/§7" + needed_xp + "§8)");
+            if (claimed) lore.add("§aLevel Claimed");
+            if (!claimed) lore.add("§cLevel Unclaimed");
             lore.add("§fReward: §6" + reward);
             lore.add("§fLeft-click: §7Claim");
             lore.add("§fRight-click: §7Ability Info");
@@ -128,7 +138,7 @@ public class LevelPath {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -314,7 +324,7 @@ public class LevelPath {
             case "item_sell" -> {
             }
             case "join_streak" -> {
-                System.out.println(player.getName() + " has joined today.");
+
             }
         }
     }
@@ -328,7 +338,10 @@ public class LevelPath {
 
             String p = Adventures.getInstance().p.get(player.getName());
             String[] plist = p.split(";");
-
+            String pabilitys = plist[6];
+            pabilitys = pabilitys.replace("[", "");
+            pabilitys = pabilitys.replace("]", "");
+            List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
             int plevel = Integer.parseInt(plist[0]);
             int pxp = Integer.parseInt(plist[1]);
 
@@ -337,7 +350,9 @@ public class LevelPath {
             if (side - 1 == 2) j = 16;
             if (side - 1 == 3) j = 31;
             for (int i : new int[]{18,19,28,29,30,21,12,13,14,23,32,33,34,25,26}) {
-                inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward));
+                boolean claimed = pabilitylist.contains(Level.valueOf("L" + j).reward);
+
+                inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward, claimed));
                 j++;
             }
 
@@ -363,6 +378,10 @@ public class LevelPath {
 
             String p = Adventures.getInstance().p.get(player.getName());
             String[] plist = p.split(";");
+            String pabilitys = plist[6];
+            pabilitys = pabilitys.replace("[", "");
+            pabilitys = pabilitys.replace("]", "");
+            List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
 
             int plevel = Integer.parseInt(plist[0]);
             int pxp = Integer.parseInt(plist[1]);
@@ -371,7 +390,9 @@ public class LevelPath {
             if (side + 1 == 2) j = 16;
             if (side + 1 == 3) j = 31;
             for (int i : new int[]{18,19,28,29,30,21,12,13,14,23,32,33,34,25,26}) {
-                inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward));
+                boolean claimed = pabilitylist.contains(Level.valueOf("L" + j).reward);
+
+                inv.setItem(i, LevelItem(j, pxp, Level.valueOf("L" + j).xp, plevel, Level.valueOf("L" + j).reward, claimed));
                 j++;
             }
 

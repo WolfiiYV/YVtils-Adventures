@@ -23,14 +23,14 @@ public class EntityDeath implements Listener {
     public void onEvent(EntityDeathEvent e) {
         try {
             if (e.getEntity().getKiller().getType() != EntityType.PLAYER) return;
-        }catch (NullPointerException ignored) {
+        } catch (NullPointerException ignored) {
             return;
         }
         Player player = e.getEntity().getKiller();
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D4.name))) {
             new ExecuteDifficulty().CarefulSnail_MobLuck(e, player, random);

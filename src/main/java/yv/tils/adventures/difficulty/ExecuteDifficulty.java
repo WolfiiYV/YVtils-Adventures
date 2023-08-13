@@ -86,8 +86,6 @@ public class ExecuteDifficulty {
 
             int extraDrops = random.nextInt(maxExtraDropAmount - minExtraDropAmount + 1) + minExtraDropAmount;
 
-            System.out.println(extraDrops);
-
             List<ItemStack> drops = (List<ItemStack>) block.getDrops(e.getPlayer().getInventory().getItemInMainHand());
 
             for (int i = 0; i < drops.size(); i++) {
@@ -110,8 +108,6 @@ public class ExecuteDifficulty {
         int maxExtraDropAmount = 3;
 
         int extraDrops = random.nextInt(maxExtraDropAmount - minExtraDropAmount + 1) + minExtraDropAmount;
-
-        System.out.println(extraDrops);
 
         List<ItemStack> drops = e.getDrops();
         List<ItemStack> modifiedDrops = new ArrayList<>();

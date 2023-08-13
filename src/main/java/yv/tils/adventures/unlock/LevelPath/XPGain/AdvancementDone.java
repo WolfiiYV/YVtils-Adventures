@@ -1,6 +1,5 @@
 package yv.tils.adventures.unlock.LevelPath.XPGain;
 
-import org.bukkit.advancement.Advancement;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 

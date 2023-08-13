@@ -1,10 +1,8 @@
 package yv.tils.adventures.unlock.LevelPath.XPGain;
 
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import yv.tils.adventures.Adventures;
-import yv.tils.adventures.difficulty.Difficultys;
 import yv.tils.adventures.unlock.LevelPath.Level;
 import yv.tils.adventures.unlock.LevelPath.PlayerEntry;
 
@@ -42,7 +40,9 @@ public class XPManager {
     }
 
     private void LevelUp(Player player, int level, int xp) {
-        player.sendMessage("You leveled up! New Level: " + level);
+        player.sendMessage("§8----------------------\n" +
+                "§eYou leveled up! New Level: " + level +
+                "\n§8----------------------");
 
         File file = new File(Adventures.getInstance().getDataFolder(), "level-path.yml");
         YamlConfiguration ymlfile = YamlConfiguration.loadConfiguration(file);

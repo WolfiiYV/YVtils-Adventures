@@ -30,7 +30,7 @@ public class VampireHandler implements CommandExecutor {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> pabilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -124,7 +124,6 @@ public class VampireHandler implements CommandExecutor {
                         AreaEffectCloud mob2 = (AreaEffectCloud) player.getPassengers().get(0);
                         Entity mob = mob2.getPassengers().get(0);
 
-                        System.out.println("You transformed back");
                         player.sendMessage("You have transformed back!");
                         player.setCustomNameVisible(true);
                         player.setAllowFlight(false);
@@ -145,7 +144,6 @@ public class VampireHandler implements CommandExecutor {
                         return false;
                     } else if (main.Vampire_Transform_inactive.containsKey(player)) {
                         if (main.Vampire_Transform.asMap().containsKey(player)) {
-                            System.out.println("You soon will transform!");
                             Entity mob = player.getWorld().spawnEntity(player.getLocation(), EntityType.BAT);
                             AreaEffectCloud mob2 = (AreaEffectCloud) player.getWorld().spawnEntity(player.getLocation(), EntityType.AREA_EFFECT_CLOUD);
 
@@ -182,7 +180,6 @@ public class VampireHandler implements CommandExecutor {
                         return false;
                     }
                 }
-                System.out.println("You soon will transform!");
                 Entity mob = player.getWorld().spawnEntity(player.getLocation(), EntityType.BAT);
                 AreaEffectCloud mob2 = (AreaEffectCloud) player.getWorld().spawnEntity(player.getLocation(), EntityType.AREA_EFFECT_CLOUD);
 
@@ -203,10 +200,10 @@ public class VampireHandler implements CommandExecutor {
                 player.addPassenger(mob2);
                 mob2.addPassenger(mob);
 
-                main.Vampire_Transform_active.put(player, System.currentTimeMillis() + 900000);
+                main.Vampire_Transform_active.put(player, System.currentTimeMillis() + 600000);
                 main.Vampire_Transform.put(player, System.currentTimeMillis() + 5400000);
                 Transform_Direction(player, mob);
-                Transform_Cooldown(player, mob, mob2, 18000L);
+                Transform_Cooldown(player, mob, mob2, 12000L);
             }
         }
         return false;
@@ -263,7 +260,6 @@ public class VampireHandler implements CommandExecutor {
 
                 new BukkitRunnable() {
                     public void run() {
-                        System.out.println("You transformed back");
                         player.sendMessage("You have transformed back!");
                         player.setCustomNameVisible(true);
                         player.setAllowFlight(false);

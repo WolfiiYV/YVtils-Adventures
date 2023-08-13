@@ -25,7 +25,7 @@ public class QuitListener implements Listener {
     }
 
     private void CancelTimeTracker(Player player) {
-        int id = new Adventures().PlayTimeTracker.get(player);
+        int id = Adventures.getInstance().PlayTimeTracker.get(player);
         Bukkit.getScheduler().cancelTask(id);
     }
 }

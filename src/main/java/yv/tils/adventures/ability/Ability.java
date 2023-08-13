@@ -53,8 +53,6 @@ public class Ability {
     public void IllSpareYourLife(Player player, int level, EntityDamageEvent e) {
         int xp = player.getLevel();
 
-        System.out.println(xp);
-
         switch (level) {
             case 1 -> {
                 if (xp >= 30) {
@@ -194,7 +192,7 @@ public class Ability {
             public void run() {
                 Adventures.getInstance().onFireAbility.remove(player);
             }
-        }.runTaskLater(Adventures.getInstance(), 2000L);
+        }.runTaskLater(Adventures.getInstance(), 3000L);
     }
 
     //Light Flight

@@ -15,15 +15,16 @@ import java.io.IOException;
 public class DailyJoin {
     public void onDailyJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
-        if (Adventures.getInstance().dailyJoinXP.contains(player.getUniqueId())) return;
+        String p = Adventures.getInstance().p.get(player.getName());
+        String[] plist = p.split(";");
+        boolean claimed = Boolean.parseBoolean(plist[3]);
+        int pJoin = Integer.parseInt(plist[2]);
+        int xp = 50;
+
+        if (claimed) return;
 
         File file = new File(Adventures.getInstance().getDataFolder(), "level-path.yml");
         YamlConfiguration ymlfile = YamlConfiguration.loadConfiguration(file);
-
-        String p = Adventures.getInstance().p.get(player.getName());
-        String[] plist = p.split(";");
-        int pJoin = Integer.parseInt(plist[2]);
-        int xp = 50;
 
         if (pJoin >= 30) {
             xp = 1000;
@@ -41,8 +42,8 @@ public class DailyJoin {
             xp = 100;
         }
 
-        Adventures.getInstance().dailyJoinXP.add(player.getUniqueId());
         ymlfile.set(player.getName() + ".JoinStreak", pJoin + 1);
+        ymlfile.set(player.getName() + ".JoinStreakClaimed", true);
         try {
             ymlfile.save(file);
         } catch (IOException ignored) {}

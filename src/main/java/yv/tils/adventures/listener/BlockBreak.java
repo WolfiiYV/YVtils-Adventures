@@ -25,7 +25,7 @@ public class BlockBreak implements Listener {
     public void onEvent(BlockBreakEvent e) {
         String p = Adventures.getInstance().p.get(e.getPlayer().getName());
         String[] plist = p.split(";");
-        String pdifficulty = plist[6];
+        String pdifficulty = plist[7];
 
         if (pdifficulty.equals(ChatColor.stripColor(Difficultys.D4.name))) {
             new ExecuteDifficulty().CarefulSnail_BlockLuck(e, increasedDropItems, random);

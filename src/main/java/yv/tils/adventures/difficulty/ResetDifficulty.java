@@ -5,6 +5,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import yv.tils.adventures.Adventures;
 import yv.tils.adventures.cmd.CommandHandler;
 import yv.tils.adventures.unlock.LevelPath.Level;
@@ -17,6 +19,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.bukkit.potion.PotionEffect.INFINITE_DURATION;
 
 /**
  * @version 1.0
@@ -42,7 +46,7 @@ public class ResetDifficulty {
 
         String p = Adventures.getInstance().p.get(player.getName());
         String[] plist = p.split(";");
-        String pabilitys = plist[5];
+        String pabilitys = plist[6];
         pabilitys = pabilitys.replace("[", "");
         pabilitys = pabilitys.replace("]", "");
         List<String> abilitylist = new ArrayList<>(List.of(pabilitys.split(", ")));
@@ -56,6 +60,10 @@ public class ResetDifficulty {
         }
         new ConfigModeration().ConfigContentAdd("level-path", player.getName() + ".Difficulty", "none");
         new PlayerEntry().configGetter(player);
+
+        player.setWalkSpeed(0.2f);
+        player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
+        player.removePotionEffect(PotionEffectType.FAST_DIGGING);
 
         sender.sendMessage("You successful removed the Difficulty of " + player.getName());
 
